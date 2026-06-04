@@ -1,11 +1,8 @@
 import { getCommands } from "./commandRegistry.js";
-import type { CLICommand } from "./commandRegistry.js";
+import type { State } from "../state.js";
 
-export function help(
-  _args: string[],
-  _commands: Record<string, CLICommand>,
-): void {
-  const commands = getCommands();
+export function help(state: State): void {
+  const commands = state.commands;
   let printableCommands: string = "";
 
   for (const command in commands) {
