@@ -1,7 +1,6 @@
-import { getCommands } from "./commandRegistry.js";
 import type { State } from "../state.js";
 
-export function help(state: State): void {
+export async function help(state: State): Promise<void> {
   const commands = state.commands;
   let printableCommands: string = "";
 

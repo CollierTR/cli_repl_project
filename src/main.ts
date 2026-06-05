@@ -5,7 +5,11 @@ import { initState } from "./state.js";
 function main() {
   const State = initState();
 
-  startREPL(State);
+  try {
+    startREPL(State);
+  } catch (err) {
+    console.log(`Error: ${err}`);
+  }
 }
 
 main();

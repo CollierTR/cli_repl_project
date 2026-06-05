@@ -12,14 +12,14 @@ export function startREPL(State: State): void {
   const commands = getCommands();
 
   State.rl.prompt();
-  State.rl.on("line", (input: string) => {
+  State.rl.on("line", async (input: string) => {
     const cleanedInput = cleanInput(input);
     if (cleanedInput.length === 0) {
       State.rl.prompt();
     } else {
       if (commands[cleanedInput[0]]) {
         try {
-          commands[cleanedInput[0]].callback(State);
+          await commands[cleanedInput[0]].callback(State);
         } catch (e) {
           console.log(`Error: ${e}`);
         }
