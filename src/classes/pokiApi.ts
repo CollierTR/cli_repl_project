@@ -5,6 +5,7 @@ const ttl = 5 * 60 * 1000; // 5 min == 300000 ms
 export class PokeAPI {
   private static readonly baseURL = "https://pokeapi.co/api/v2";
   private static readonly locationEndpoint = "/location-area/";
+  private static readonly pokemonEndpoint = "/pokemon/";
   #cache: Cache | undefined;
 
   constructor() {
@@ -36,7 +37,20 @@ export class PokeAPI {
     this.#cache?.add(url, data);
     return data;
   }
+
+  async fetchPokemon(pokemonName: string): Promise<Pokemon> {
+    const url = `${PokeAPI.baseURL}${PokeAPI.pokemonEndpoint}${pokemonName}`;
+
+    const res = await fetch(url);
+    const data = await res.json();
+    this.#cache?.add(url, data);
+    return data;
+  }
 }
+export type Pokemon = {
+  name: string;
+  base_experience: 64;
+};
 
 export interface Location {
   name: string;
