@@ -5,6 +5,7 @@ import { mapb } from "./mapb.js";
 import { explore } from "./explore.js";
 import { catchPokemon } from "./catch.js";
 import { inspect } from "./inspect.js";
+import { pokedex } from "./pokedex.js";
 import type { CLICommand } from "../state.js";
 
 export function getCommands(): Record<string, CLICommand> {
@@ -43,6 +44,11 @@ export function getCommands(): Record<string, CLICommand> {
       name: "inspect",
       description: "inspect a pokemon if it is in your pokedex",
       callback: inspect,
+    },
+    pokedex: {
+      name: "pokedex",
+      description: "Open your pokedex",
+      callback: pokedex,
     },
     // can add more commands here
   };
