@@ -2,6 +2,7 @@ import { exit } from "./exit.js";
 import { help } from "./help.js";
 import { map } from "./map.js";
 import { mapb } from "./mapb.js";
+import { explore } from "./explore.js";
 import type { CLICommand } from "../state.js";
 
 export function getCommands(): Record<string, CLICommand> {
@@ -25,6 +26,11 @@ export function getCommands(): Record<string, CLICommand> {
       name: "mapb",
       description: "Displays 20 Previous locations",
       callback: mapb,
+    },
+    explore: {
+      name: "explore",
+      description: "Shows the Pokemon in the given location",
+      callback: explore,
     },
     // can add more commands here
   };

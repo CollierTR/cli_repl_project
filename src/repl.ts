@@ -19,7 +19,7 @@ export function startREPL(State: State): void {
     } else {
       if (commands[cleanedInput[0]]) {
         try {
-          await commands[cleanedInput[0]].callback(State);
+          await commands[cleanedInput[0]].callback(State, ...cleanedInput.slice(1));
         } catch (e) {
           console.log(`Error: ${e}`);
         }

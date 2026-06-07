@@ -24,11 +24,11 @@ export class PokeAPI {
     return data;
   }
 
-  async fetchLocation(locationName: string): Promise<Location> {
-    const url = `${PokeAPI.baseURL}${PokeAPI.locationEndpoint}${locationName}/`;
+  async fetchLocation(locationName: string): Promise<LocationDetail> {
+    const url = `${PokeAPI.baseURL}${PokeAPI.locationEndpoint}${locationName}`;
 
     if (this.#cache?.get(url)) {
-      return this.#cache.get(url) as Location;
+      return this.#cache.get(url) as LocationDetail;
     }
 
     const res = await fetch(url);
